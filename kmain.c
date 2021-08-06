@@ -1,5 +1,13 @@
 /* The C function */
-    int sum_of_three(int arg1, int arg2, int arg3)
+   #include "drivers/frame_buffer.h"
+   #include "drivers/serial_port.h"
+
+    void kmain()
     {
-        return arg1 + arg2 + arg3;
+    
+            char ptr2[] = "Welcome to WVBOS";
+            serial_write(SERIAL_COM1_BASE, ptr2, 26);
+            fb_write(ptr2, 19);
+    
+    
     }
