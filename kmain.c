@@ -1,14 +1,20 @@
-/* The C function */
-   #include "drivers/frame_buffer.h"
-   #include "drivers/serial_port.h"
-   #include "memory_segments.h"
+ #include "drivers/frame_buffer.h"
+    #include "drivers/serial_port.h"
+    #include "drivers/io.h"
+    #include "segmentation/segments.h"
+    #include "interrupts/interrupts.h"
+    #include "interrupts/keyboard.h"
+    #include "interrupts/pic.h"
+    
 
     void kmain()
     {
-            segments_install_gdt();
-            char ptr2[] = "Welcome to WVBOS";
-            serial_write(SERIAL_COM1_BASE, ptr2, 26);
-            fb_write(ptr2, 19);
-    
-    
+
+       char arr[] = "Welcome to WVBOS";
+       fb_move_cursor(6*80);
+       fb_write(arr, 20);
+       serial_write(arr, 20);
+       segments_install_gdt();
+       interrupts_install_idt();
+
     }
