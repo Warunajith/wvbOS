@@ -5,11 +5,13 @@
     #include "interrupts/interrupts.h"
     #include "interrupts/keyboard.h"
     #include "interrupts/pic.h"
-    
+    #include "multiboot.h"
+    #include "paging.h"
 
-    void kmain()
+    void kmain(unsigned int ebx)
     {
 
+	init_paging();
        /*char arr[] = "Welcome to WVBOS";
        fb_move_cursor(6*80);
        fb_write(arr, 20);
