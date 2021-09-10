@@ -26,6 +26,18 @@
     loader:                         ; the loader label (defined as entry point in linker script)
 	
     	push ebx                    ; multiboot info in ebx 
+	extern kernel_virtual_start
+    extern kernel_virtual_end
+    extern kernel_physical_start
+    extern kernel_physical_end
+
+    ; ...
+
+    push kernel_physical_end
+    push kernel_physical_start
+    push kernel_virtual_end
+    push kernel_virtual_start
+
     	call kmain                  ; call the function, the result will be in eax
 	
     .loop:
