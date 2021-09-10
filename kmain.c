@@ -8,10 +8,10 @@
     #include "multiboot.h"
     #include "paging.h"
 
-    void kmain(unsigned int ebx)
+    void kmain(unsigned int ebx,u32int kernel_physical_start, u32int kernel_physical_end)
     {
 
-	init_paging();
+	init_paging(kernel_physical_start,kernel_physical_end);
        /*char arr[] = "Welcome to WVBOS";
        fb_move_cursor(6*80);
        fb_write(arr, 20);
