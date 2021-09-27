@@ -7,6 +7,8 @@
     #include "interrupts/pic.h"
     #include "multiboot.h"
     #include "paging.h"
+    #include "type.h"
+    #include "kheap.h"
 
     void kmain(unsigned int ebx,u32int kernel_physical_start, u32int kernel_physical_end)
     {
